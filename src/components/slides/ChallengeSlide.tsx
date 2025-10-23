@@ -7,6 +7,24 @@ export function ChallengeSlide() {
         <AlertCircle className="h-8 w-8 md:h-10 md:w-10 text-red-600 flex-shrink-0" />
         <h1 className="text-slate-900">The Challenge: The BFS Cohort</h1>
       </div>
+
+      {/* Metrics Box */}
+      <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 mb-8">
+        <div className="grid grid-cols-3 gap-4 text-center">
+          <div>
+            <div className="text-red-900" style={{ fontSize: "2rem", lineHeight: "1.2" }}>~60</div>
+            <div className="text-red-700 mt-1">Students</div>
+          </div>
+          <div>
+            <div className="text-red-900" style={{ fontSize: "2rem", lineHeight: "1.2" }}>45min</div>
+            <div className="text-red-700 mt-1">Per Case</div>
+          </div>
+          <div>
+            <div className="text-red-900" style={{ fontSize: "2rem", lineHeight: "1.2" }}>45hrs</div>
+            <div className="text-red-700 mt-1">Total Time</div>
+          </div>
+        </div>
+      </div>
       
       <p className="text-slate-700 mb-8 leading-relaxed">
         A significant cohort of students with outstanding fees (BFS) are unable to re-enrol each year. 

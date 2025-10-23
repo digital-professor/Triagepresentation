@@ -79,6 +79,15 @@ export function FunnelSlide() {
           );
         })}
       </div>
+
+      {/* Efficiency Highlight */}
+      <div className="mt-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-6 text-white text-center shadow-lg">
+        <div className="font-bold mb-2" style={{ fontSize: "2.5rem", lineHeight: "1" }}>90%</div>
+        <h3 className="mb-2 text-white">Efficiency Gain</h3>
+        <p className="text-white/90 max-w-2xl mx-auto">
+          By filtering out non-viable cases automatically, we saved 15.75 hours and focused advisor time on the 6 cases with real retention potential
+        </p>
+      </div>
     </div>
   );
 }
