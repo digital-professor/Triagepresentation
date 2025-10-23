@@ -16,7 +16,7 @@ export function TitleSlide() {
       </h2>
       
       <div className="space-y-2 text-blue-100">
-        <p><span className="font-medium text-white">Presented by:</span> [Your Name]</p>
+        <p><span className="font-medium text-white">Presented by:</span> Mr. X</p>
         <p><span className="font-medium text-white">Role:</span> Senior Student Advisor</p>
         <p><span className="font-medium text-white">Date:</span> 17 October 2025</p>
       </div>

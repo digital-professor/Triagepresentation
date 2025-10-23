@@ -48,7 +48,7 @@ export function Presentation() {
     <div className="size-full bg-gradient-to-br from-slate-50 to-slate-100 flex flex-col">
       {/* Slide Content */}
       <div className="flex-1 overflow-auto p-4 md:p-8">
-        <div className="w-full max-w-6xl mx-auto">
+        <div className="w-full max-w-6xl mx-auto shadow-2xl rounded-xl border border-slate-200/50 bg-white">
           <CurrentSlideComponent />
         </div>
       </div>
