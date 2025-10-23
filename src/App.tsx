@@ -1,4 +1,4 @@
-import { Presentation } from "./components/Presentation";
+import Presentation from "./components/Presentation.tsx"; // Added .tsx extension
 
 export default function App() {
   return (
@@ -7,3 +7,4 @@ export default function App() {
     </div>
   );
 }
+
