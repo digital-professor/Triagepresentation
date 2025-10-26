@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   GraduationCap,
   AlertCircle,
@@ -43,6 +43,21 @@ import {
   Wrench // Added for Transferable Skills
 } from "lucide-react";
 
+/** Hook: true when viewport >= 768px (md up) */
+function useIsMdUp() {
+  const [isMdUp, setIsMdUp] = useState(true); // Default to true to avoid layout flash
+  useEffect(() => {
+    // Ensure window is defined (for server-side rendering or build environments)
+    if (typeof window === 'undefined') return; 
+    const mq = window.matchMedia("(min-width: 768px)");
+    const onChange = () => setIsMdUp(mq.matches);
+    onChange(); // Set initial value
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+  return isMdUp;
+}
+
 // --- Slide 1: TitleSlide (AI Enhanced COLOR FIXED, Centered) ---
 function TitleSlide() {
   return (
@@ -50,7 +65,7 @@ function TitleSlide() {
       <div className="flex items-center gap-4 mb-8">
         <GraduationCap className="h-12 w-12 md:h-16 md:w-16" />
       </div>
-      {/* FIXED: Removed text-white from h1, changed color to text-blue-300 */}
+      {/* FIXED: Removed text-white from h1, changed span color */}
       <h1 className="mb-6 leading-tight font-bold text-3xl md:text-4xl text-center text-balance max-w-3xl">
         <span className="font-semibold text-blue-300">AI-Enhanced</span> Proactive Triage Pilot: From Reactive Bottleneck to Student Retention Pathway
       </h1>
@@ -630,10 +645,12 @@ export default function Presentation() {
            
            {/* Mobile Navigator (stacks vertically, hidden on desktop) */}
            <div className="flex flex-col items-center space-y-4 md:hidden">
+              {/* Dots/Counter are first */}
               <div className="flex flex-col items-center w-full">
                 <div className="flex justify-center gap-2 mb-2">{slides.map((_, idx) => (<button key={idx} onClick={() => setCurrentSlide(idx)} className={`w-3 h-3 rounded-full transition-all ${idx === currentSlide ? 'bg-blue-600 w-6' : 'bg-slate-300 hover:bg-slate-400'}`} aria-label={`Go to slide ${idx + 1}`} />))}</div>
                 <div className="text-slate-600 text-sm text-center">Slide {currentSlide + 1} of {slides.length}: {slides[currentSlide].name}</div>
               </div>
+              {/* Buttons are second, side-by-side */}
               <div className="flex w-full gap-4">
                  <button
                   onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
