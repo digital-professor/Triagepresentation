@@ -45,35 +45,33 @@ import {
 
 /** Hook: true when viewport >= 768px (md up) */
 function useIsMdUp() {
-  const [isMdUp, setIsMdUp] = useState(true); // Default to true to avoid layout flash
-  useEffect(() => {
-    // Ensure window is defined (for server-side rendering or build environments)
-    if (typeof window === 'undefined') return; 
-    const mq = window.matchMedia("(min-width: 768px)");
-    const onChange = () => setIsMdUp(mq.matches);
-    onChange(); // Set initial value
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
-  return isMdUp;
+  const [isMdUp, setIsMdUp] = useState(true); // Default to true to avoid layout flash
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mq = window.matchMedia("(min-width: 768px)");
+    const onChange = () => setIsMdUp(mq.matches);
+    onChange();
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+  return isMdUp;
 }
 
 // --- Slide 1: TitleSlide (AI Enhanced COLOR FIXED, Centered) ---
 function TitleSlide() {
   return (
-    <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl p-8 md:p-16 text-white shadow-2xl min-h-[500px] flex flex-col justify-center items-center">
+    <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl p-8 md:p-16 shadow-2xl min-h-[500px] flex flex-col justify-center items-center">
       <div className="flex items-center gap-4 mb-8">
-        <GraduationCap className="h-12 w-12 md:h-16 md:w-16" />
+        <GraduationCap className="h-12 w-12 md:h-16 md:w-16 text-white" />
       </div>
-      {/* FIXED: Removed text-white from h1, changed span color */}
-      <h1 className="mb-6 leading-tight font-bold text-3xl md:text-4xl text-center text-balance max-w-3xl">
+      {/* Explicit colors on elements to avoid inheritance issues */}
+      <h1 className="mb-6 leading-tight font-bold text-3xl md:text-4xl text-center text-balance max-w-3xl text-white">
         <span className="font-semibold text-blue-300">AI-Enhanced</span> Proactive Triage Pilot: From Reactive Bottleneck to Student Retention Pathway
       </h1>
       <h2 className="mb-12 text-blue-100 text-center text-balance max-w-2xl">
         Analysing the BFS Cohort to Create a Pathway for Student Success
       </h2>
       <div className="space-y-2 text-blue-100 text-center md:text-left">
-        {/* FIXED: Updated Name and Date */}
         <p><span className="font-semibold text-white">Presented by:</span> Yasser Riaz</p>
         <p><span className="font-semibold text-white">Role:</span> Senior Student Advisor</p>
         <p><span className="font-semibold text-white">Date:</span> 27 October 2025</p>
@@ -99,7 +97,6 @@ function ExecutiveSummarySlide() {
         </div>
         <div className="bg-white/10 backdrop-blur rounded-xl p-6 border border-white/20">
           <h2 className="text-blue-400 mb-4 text-lg">The Solution</h2>
-          {/* Updated Wording */}
           <p className="text-slate-200 leading-relaxed">
             An automated triage tool developed in 3 days, <span className="font-semibold">demonstrating AI capability to enhance Student Advice team efficiency</span>. (MS Forms + Power Automate + Excel VBA).
           </p>
@@ -113,11 +110,11 @@ function ExecutiveSummarySlide() {
             <div className="text-slate-300 text-sm">Response Rate</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">~79%</div> {/* (45-9.75)/45 */}
+            <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">~79%</div>
             <div className="text-slate-300 text-sm">Efficiency Gain</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-purple-400 mb-2">16.5</div> {/* 22 * 0.75 */}
+            <div className="text-3xl md:text-4xl font-bold text-purple-400 mb-2">16.5</div>
             <div className="text-slate-300 text-sm">Hours Saved</div>
           </div>
           <div className="text-center">
@@ -200,7 +197,6 @@ function SolutionSlide() {
         <Sparkles className="h-8 w-8 md:h-10 md:w-10 text-green-600 flex-shrink-0" />
         <h1 className="text-slate-900 font-bold text-3xl">The Solution: An Automated Triage Tool</h1>
       </div>
-      {/* Updated Paragraph */}
       <p className="text-slate-700 mb-8 leading-relaxed">
         To address this operational challenge and <span className="font-semibold">demonstrate the potential of AI/automation to empower our Student Advice team</span>, I took the initiative to build a functional prototype. Using AI as a co-development partner, I rapidly developed this automated triage tool <span className="font-semibold">designed to improve advisor operational efficiency and workflow</span>.
       </p>
@@ -235,7 +231,6 @@ function SolutionSlide() {
             </div>
           </div>
         </div>
-        {/* Updated Rapid Prototyping Box */}
         <div className="bg-blue-50 border-l-4 border-blue-600 rounded-lg p-6">
           <div className="flex items-start gap-4">
             <Rocket className="h-8 w-8 text-blue-600 flex-shrink-0 mt-1" />
@@ -384,17 +379,14 @@ function AccuracySlide() {
         From 38 unique responses, the scoring model identified 11 students as 'High Priority'. Analysis of this group provides powerful validation.
       </p>
       <div className="grid md:grid-cols-3 gap-6">
-        {/* Validation Box */}
         <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 border-2 border-green-200">
           <CheckCircle2 className="h-10 w-10 md:h-12 md:w-12 text-green-600 mb-4" /><h2 className="text-slate-900 mb-4">Validation: Aligned with Expertise</h2><div className="bg-white rounded-lg p-4 mb-4"><div className="font-bold text-green-600 mb-2" style={{ fontSize: "2rem" }}>2 of the 11</div><div className="text-slate-700">High Scorers Already Known</div></div>
           <p className="text-slate-700">Crucially, 2 of the students flagged as 'High Priority' were <span className="font-semibold">already known</span> complex cases receiving support via standard appointments. This validates the model's accuracy against expert advisor assessment.</p>
         </div>
-        {/* Discovery Box */}
         <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border-2 border-blue-200">
           <UserSearch className="h-10 w-10 md:h-12 md:w-12 text-blue-600 mb-4" /><h2 className="text-slate-900 mb-4">Discovery: Identifying New Cases</h2><div className="bg-white rounded-lg p-4 mb-4"><div className="font-bold text-blue-600 mb-2" style={{ fontSize: "2rem" }}>5 New CPR Cases</div><div className="text-slate-700">Found from 8 New Targets</div></div>
           <p className="text-slate-700">Of the remaining 9 high scorers (excluding 2 known), 1 submitted late. 8 were targeted for outreach. <span className="font-semibold">5 viable CPR cases</span> were confirmed upon contact (from 5/8 calls answered), focusing intervention effectively.</p>
         </div>
-        {/* Key Finding Box - BOLD FIXED & 70k context added */}
         <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 border-2 border-purple-200">
           <Target className="h-10 w-10 md:h-12 md:w-12 text-purple-600 mb-4" /><h2 className="text-slate-900 mb-4">Key Finding: Efficient & Accurate</h2><p className="text-slate-700 mb-4">The triage logic is <span className="font-semibold text-purple-600">sound and validated</span>. It accurately identifies <span className="font-semibold">both known complex cases</span> and <span className="font-semibold">new potential CPR candidates</span>, while successfully filtering out <span className="font-semibold">27 lower-priority/late responses</span> (27/38). The 11 high-priority students identified represent a total potential revenue risk of ~£70k.</p><div className="bg-purple-200 text-purple-900 rounded-lg p-4 text-center"><div className="font-semibold">Model Validated ✓</div></div>
         </div>
@@ -403,13 +395,12 @@ function AccuracySlide() {
   );
 }
 
-
-// --- Slide 9: InsightsSlide (Updated Metrics, Prevention insight enhanced, Bold fixed) ---
+// --- Slide 9: InsightsSlide (Updated Metrics...) ---
 function InsightsSlide() {
   const insights = [
     { icon: CheckCircle2, number: "1", title: "The Triage Model is a Definitive Success", description: "The model's ability to correctly filter out non-viable cases is a major efficiency win. It validates the tool as a reliable method for focusing advisor resources.", color: "green", metrics: [{ value: "27", label: "Cases Filtered" }, { value: "16.5hrs", label: "Time Saved" }, { value: "~79%", label: "Efficiency Gain" }] },
-    { icon: Target, number: "2", title: "Model Accuracy is Validated", description: "The tool perfectly aligned with expert advisor assessment by independently identifying 2 high-priority students already known to our service.", color: "purple", metrics: [{ value: "2/2", label: "Known Cases Found" }, { value: "100%", label: "Validation" }, { value: "Advisor-Aligned", label: "Logic" }] }, // Updated known cases
-    { icon: TrendingUp, number: "3", title: "Prevention Over Crisis Management", description: "The pilot identified students at multiple crisis stages. Using this tool earlier in-year would shift us from crisis management to crisis prevention, demonstrating a <span class='font-semibold'>strategic application of data analysis for proactive, targeted interventions</span>. Furthermore, the pilot identified <span class='font-semibold'>3 high-scoring students lacking current academic records</span>, suggesting early disengagement potentially preventable with this proactive model.", color: "orange", metrics: [{ value: "In-Year", label: "New Timing" }, { value: "Preventative", label: "New Model" }, { value: "Higher Retention", label: "Goal" }] }, // Enhanced description
+    { icon: Target, number: "2", title: "Model Accuracy is Validated", description: "The tool perfectly aligned with expert advisor assessment by independently identifying 2 high-priority students already known to our service.", color: "purple", metrics: [{ value: "2/2", label: "Known Cases Found" }, { value: "100%", label: "Validation" }, { value: "Advisor-Aligned", label: "Logic" }] },
+    { icon: TrendingUp, number: "3", title: "Prevention Over Crisis Management", description: "The pilot identified students at multiple crisis stages. Using this tool earlier in-year would shift us from crisis management to crisis prevention, demonstrating a <span class='font-semibold'>strategic application of data analysis for proactive, targeted interventions</span>. Furthermore, the pilot identified <span class='font-semibold'>3 high-scoring students lacking current academic records</span>, suggesting early disengagement potentially preventable with this proactive model.", color: "orange", metrics: [{ value: "In-Year", label: "New Timing" }, { value: "Preventative", label: "New Model" }, { value: "Higher Retention", label: "Goal" }] },
   ];
   return (
     <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl">
@@ -425,7 +416,6 @@ function InsightsSlide() {
                 <div className={`bg-gradient-to-br ${colorClasses[insight.color].split(' ')[0]} ${colorClasses[insight.color].split(' ')[1].replace('bg-', 'to-')} rounded-full p-3 md:p-4 text-white flex-shrink-0`}><Icon className="h-6 w-6 md:h-8 md:w-8" /></div>
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-2 mb-3"><span className="font-bold text-slate-900">Insight {insight.number}:</span><h2 className="text-slate-900">{insight.title}</h2></div>
-                  {/* Use dangerouslySetInnerHTML for the span tags in description */}
                   <p className="text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: insight.description }}></p>
                 </div>
               </div>
@@ -445,7 +435,7 @@ function InsightsSlide() {
   );
 }
 
-// --- NEW Slide 10: Strategic Alignment & Capability Demo Slide (FINAL REVISED VERSION) ---
+// --- NEW Slide 10: Strategic Alignment & Capability Demo Slide ---
 function StrategicAlignmentSlide() {
   return (
     <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl">
@@ -455,38 +445,31 @@ function StrategicAlignmentSlide() {
       </div>
       <h2 className="text-slate-600 mb-8">Connecting Capability to Team Benefits and Institutional Goals</h2>
       <div className="space-y-6">
-        {/* Point 1: Team & LSBU Goals */}
         <div className="flex items-start gap-4 p-4 bg-indigo-50 border-l-4 border-indigo-500 rounded-lg">
           <Target className="h-6 w-6 text-indigo-600 flex-shrink-0 mt-1" />
           <div><h3 className="text-slate-900 mb-1 font-semibold">Alignment with Goals</h3><p className="text-slate-700">Supports <span className="font-semibold">Student Advice team goals</span> (efficiency, improved service) and broader LSBU goals (<span className="font-semibold">Student Experience</span>).</p></div>
         </div>
-        {/* Point 2: Capability Demo for Team */}
         <div className="flex items-start gap-4 p-4 bg-indigo-50 border-l-4 border-indigo-500 rounded-lg">
           <Lightbulb className="h-6 w-6 text-indigo-600 flex-shrink-0 mt-1" />
           <div><h3 className="text-slate-900 mb-1 font-semibold">Demonstrates AI Capability for Team</h3><p className="text-slate-700">Successfully showcases <span className="font-semibold">rapid tool development capability using AI</span> to solve a specific <span className="font-semibold">operational workflow problem within Student Advice</span> efficiently.</p></div>
         </div>
-         {/* Point 3: Toolkit Vision */}
-         <div className="flex items-start gap-4 p-4 bg-indigo-50 border-l-4 border-indigo-500 rounded-lg">
-           <Laptop className="h-6 w-6 text-indigo-600 flex-shrink-0 mt-1" />
+        <div className="flex items-start gap-4 p-4 bg-indigo-50 border-l-4 border-indigo-500 rounded-lg">
+          <Laptop className="h-6 w-6 text-indigo-600 flex-shrink-0 mt-1" />
           <div><h3 className="text-slate-900 mb-1 font-semibold">Foundation for Advisor Toolkit</h3><p className="text-slate-700">Provides a key component and demonstrates the approach for the developing <span className="font-semibold">Student Advisor Toolkit</span> vision, enhancing how the <span className="font-semibold">team</span> works operationally.</p></div>
         </div>
-        {/* Point 4: Staff Empowerment */}
         <div className="flex items-start gap-4 p-4 bg-indigo-50 border-l-4 border-indigo-500 rounded-lg">
-          <Users className="h-6 w-6 text-indigo-600 flex-shrink-0 mt-1" /> {/* Changed Icon */}
+          <Users className="h-6 w-6 text-indigo-600 flex-shrink-0 mt-1" />
           <div><h3 className="text-slate-900 mb-1 font-semibold">Value of Empowering Staff</h3><p className="text-slate-700">Highlights the importance of investing in tools and <span className="font-semibold">empowering staff within the team</span> (like demonstrated here) to build targeted solutions safely and effectively.</p></div>
         </div>
-         {/* Point 5: Institutional AI Context (REVISED) */}
-         <div className="flex items-start gap-4 p-4 bg-indigo-50 border-l-4 border-indigo-500 rounded-lg">
+        <div className="flex items-start gap-4 p-4 bg-indigo-50 border-l-4 border-indigo-500 rounded-lg">
           <BrainCircuit className="h-6 w-6 text-indigo-600 flex-shrink-0 mt-1" />
           <div><h3 className="text-slate-900 mb-1 font-semibold">Aligns with Institutional AI Exploration</h3><p className="text-slate-700">Contributes to the institutional exploration of AI within Student Success by showcasing a practical application focused on <span className="font-semibold">improving internal operational efficiency and advisor workflow</span>, complementing other AI applications across directorates.</p></div>
         </div>
-        {/* Point 6: Predictive Model Link */}
         <div className="flex items-start gap-4 p-4 bg-indigo-50 border-l-4 border-indigo-500 rounded-lg">
           <DatabaseZap className="h-6 w-6 text-indigo-600 flex-shrink-0 mt-1" />
           <div><h3 className="text-slate-900 mb-1 font-semibold">Enhances Existing Initiatives</h3><p className="text-slate-700">Offers potential to <span className="font-semibold">add value to initiatives like predictive modeling</span> by providing efficient, <span className="font-semibold">advisor-focused</span> follow-up mechanisms after initial student identification.</p></div>
         </div>
-         {/* Point 7: Transferable Skills */}
-         <div className="flex items-start gap-4 p-4 bg-indigo-50 border-l-4 border-indigo-500 rounded-lg">
+        <div className="flex items-start gap-4 p-4 bg-indigo-50 border-l-4 border-indigo-500 rounded-lg">
           <Wrench className="h-6 w-6 text-indigo-600 flex-shrink-0 mt-1" />
           <div><h3 className="text-slate-900 mb-1 font-semibold">Demonstrates Transferable Skills</h3><p className="text-slate-700">Showcases <span className="font-semibold">transferable skills</span> in rapid AI prototyping, data analysis, <span className="font-semibold">secure workflow automation</span>, and <span className="font-semibold">navigating institutional constraints</span> applicable to operational challenges across the university.</p></div>
         </div>
@@ -495,8 +478,7 @@ function StrategicAlignmentSlide() {
   );
 }
 
-
-// --- Slide 11: InvestmentSlide (Revised for Team Focus, No Cost, Secured Resources - becomes Slide 12, BOLD FIXED) ---
+// --- Slide 11: InvestmentSlide ---
 function InvestmentSlide() {
   const futureApplications = [
     { icon: UserCheck, title: "Early Intervention Model", description: "Apply proactively during the academic year (e.g., by January) to identify students without confirmed funding." },
@@ -507,25 +489,22 @@ function InvestmentSlide() {
     { icon: Database, title: "Database Integration (SQL/Dataverse)", description: "Move from Excel to a secure, scalable database for robust data validation and improved data governance." },
     { icon: Link, title: "System Integration (API Access)", description: "Create live, automated data feeds from our core Student Information System." },
     { icon: Smartphone, title: "Advisor UX App", description: "Develop a user-friendly app interface for advisors instead of relying on Excel." },
-    { icon: BrainCircuit, title: "Explore Advanced AI Applications", description: "Investigate potential for using Generative AI and Machine Learning in future iterations for more nuanced text analysis, predictive insights, or automated communication, informing a wider AI strategy." }, // Refined wording
-    { icon: DatabaseZap , title: "Enhance Predictive Model Outreach", description: "Integrate triage *after* initial outreach from predictive models to provide efficient, targeted follow-up for complex cases identified *by advisors*."} // Added new point
+    { icon: BrainCircuit, title: "Explore Advanced AI Applications", description: "Investigate potential for using Generative AI and Machine Learning in future iterations for more nuanced text analysis, predictive insights, or automated communication, informing a wider AI strategy." },
+    { icon: DatabaseZap , title: "Enhance Predictive Model Outreach", description: "Integrate triage *after* initial outreach from predictive models to provide efficient, targeted follow-up for complex cases identified *by advisors*."}
   ];
   return (
     <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl">
       <div className="flex items-center gap-3 mb-6"><TrendingUp className="h-8 w-8 md:h-10 md:w-10 text-blue-600 flex-shrink-0" /><h1 className="text-slate-900 font-bold text-3xl">Investment for Future Potential</h1></div>
-      {/* Updated opening */}
       <p className="text-slate-700 mb-8 leading-relaxed">This pilot successfully demonstrated the capability to build impactful tools within constraints. Realizing the full potential requires appropriate resources.</p>
       <h2 className="text-slate-900 mb-4">The Business Case for Investment</h2>
       <div className="grid md:grid-cols-2 gap-6 mb-8">
         <div className="bg-green-50 border-2 border-green-200 rounded-xl p-6">
           <div className="flex items-center gap-3 mb-4"><DollarSign className="h-8 w-8 text-green-600" /><h3 className="text-slate-900">Investment in Innovation & Efficiency</h3></div>
-          {/* Removed specific cost, linked need to licenses/toolkit */}
           <p className="text-slate-700">Investment in appropriate tools, such as <span className="font-semibold">higher-specification equipment</span>, is necessary to <span className="font-semibold">leverage secured resources (test tenancy, premium licenses)</span> and efficiently build the <span className="font-semibold">next phase (AI-Powered Toolkit)</span> and scale future data-driven solutions.</p>
           <p className="text-slate-700 mt-2">This investment supports development proven to significantly enhance advisor efficiency and provide a positive ROI.</p>
         </div>
         <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6">
           <div className="flex items-center gap-3 mb-4"><Users className="h-8 w-8 text-blue-600" /><h3 className="text-slate-900">Staffing & Innovation ROI</h3></div>
-          {/* Updated wording - BOLD FIXED */}
           <p className="text-slate-700">This model enables <span className="font-semibold">1 advisor to do the work of 4-5</span>, freeing the team for high-value work.</p>
           <p className="text-slate-700 mt-2">This pilot demonstrates potential for impactful, compliant solutions developed in-house. <span className="font-semibold">Successfully securing a test tenancy and premium licenses</span> enables development of the <span className="font-semibold">AI-Powered Student Advisor Toolkit</span>. Investing in this capability empowers <span className="font-semibold">staff</span> to build further efficiency solutions <span className="font-semibold">for our service</span>.</p>
         </div>
@@ -535,14 +514,14 @@ function InvestmentSlide() {
           <h2 className="text-slate-900 mb-4">Future Applications (Scaling Out)</h2><div className="space-y-4">{futureApplications.map((item, index) => { const Icon = item.icon; return (<div key={index} className="bg-slate-50 border-l-4 border-slate-400 rounded-lg p-4 flex items-start gap-4"><Icon className="h-6 w-6 text-slate-600 flex-shrink-0 mt-1" /><div><h3 className="text-slate-900">{item.title}</h3><p className="text-slate-700 text-sm">{item.description}</p></div></div>); })}</div>
         </div>
         <div>
-          <h2 className="text-slate-900 mb-4">Future Automation (Scaling Up)</h2><div className="space-y-4">{futureAutomations.map((item, index) => { const Icon = item.icon; return (<div key={index} className="bg-slate-50 border-l-4 border-slate-400 rounded-lg p-4 flex items-start gap-4"><Icon className="h-6 w-6 text-slate-600 flex-shrink-0 mt-1" /><div><h3 className="text-slate-900">{item.title}</h3>{/* Use dangerouslySetInnerHTML to render potential italics from description, ensuring it's safe */} <p className="text-slate-700 text-sm" dangerouslySetInnerHTML={{ __html: item.description.replace(/\*(.*?)\*/g, "<i class='italic'>$1</i>") }}></p></div></div>); })}</div>
+          <h2 className="text-slate-900 mb-4">Future Automation (Scaling Up)</h2><div className="space-y-4">{futureAutomations.map((item, index) => { const Icon = item.icon; return (<div key={index} className="bg-slate-50 border-l-4 border-slate-400 rounded-lg p-4 flex items-start gap-4"><Icon className="h-6 w-6 text-slate-600 flex-shrink-0 mt-1" /><div><h3 className="text-slate-900">{item.title}</h3><p className="text-slate-700 text-sm" dangerouslySetInnerHTML={{ __html: item.description.replace(/\*(.*?)\*/g, "<i class='italic'>$1</i>") }}></p></div></div>); })}</div>
         </div>
       </div>
     </div>
   );
 }
 
-// --- Slide 12: RecommendationSlide (Becomes Slide 13) ---
+// --- Slide 12: RecommendationSlide ---
 function RecommendationSlide() {
   const benefits = [ { icon: TrendingUp, title: "Maximise Efficiency", description: "Direct advisor time to high-value cases" }, { icon: Database, title: "Data-Driven Decisions", description: "Enable evidence-based interventions" }, { icon: Users, title: "Improve Retention", description: "Create a clear pathway to support at-risk students" } ];
   return (
@@ -562,9 +541,9 @@ function RecommendationSlide() {
   );
 }
 
-// --- Slide 13: QASlide (Becomes Slide 14, Updated Numbers) ---
+// --- Slide 13: QASlide ---
 function QASlide() {
-  const stats = [ { label: "Response Rate", value: "~63% (38/60)" }, { label: "Efficiency Gain", value: "~79%" }, { label: "Advisor Hours Saved", value: "16.5" }, { label: "Revenue Protected (Pilot)", value: "~£40,000" } ]; // Updated stats
+  const stats = [ { label: "Response Rate", value: "~63% (38/60)" }, { label: "Efficiency Gain", value: "~79%" }, { label: "Advisor Hours Saved", value: "16.5" }, { label: "Revenue Protected (Pilot)", value: "~£40,000" } ];
   return (
     <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl">
       <div className="flex items-center gap-3 mb-8"><MessageCircleQuestion className="h-10 w-10 md:h-12 md:w-12 text-blue-600 flex-shrink-0" /><h1 className="text-slate-900 font-bold text-3xl">Q&A / Next Steps</h1></div>
@@ -582,8 +561,7 @@ function QASlide() {
   );
 }
 
-
-// --- Main App Component (Slide Navigator - FINAL MOBILE FIX) ---
+// --- Main App Component (Slide Navigator - uses useIsMdUp to avoid duplicate blocks) ---
 export default function Presentation() {
   const slides = [
     { name: "Title", component: TitleSlide },
@@ -595,30 +573,38 @@ export default function Presentation() {
     { name: "The Outcomes", component: ImprovedOutcomesSlide },
     { name: "Model Accuracy", component: AccuracySlide },
     { name: "Strategic Insights", component: InsightsSlide },
-    { name: "Strategic Alignment", component: StrategicAlignmentSlide }, // NEW Slide Added
-    { name: "Recommendation", component: RecommendationSlide }, // Index Shifted
-    { name: "Investment & Future Potential", component: InvestmentSlide }, // Index Shifted & Renamed
-    { name: "Q&A", component: QASlide }, // Index Shifted
+    { name: "Strategic Alignment", component: StrategicAlignmentSlide },
+    { name: "Recommendation", component: RecommendationSlide },
+    { name: "Investment & Future Potential", component: InvestmentSlide },
+    { name: "Q&A", component: QASlide },
   ];
+
   const [currentSlide, setCurrentSlide] = useState(0);
-  if (!slides || slides.length === 0 || currentSlide < 0 || currentSlide >= slides.length) { console.error("Invalid slides configuration or currentSlide index out of bounds."); return <div>Error loading presentation slides.</div>; }
+  const isMdUp = useIsMdUp();
+
+  if (!slides || slides.length === 0 || currentSlide < 0 || currentSlide >= slides.length) {
+    console.error("Invalid slides configuration or currentSlide index out of bounds.");
+    return <div>Error loading presentation slides.</div>;
+  }
   const CurrentSlideComponent = slides[currentSlide].component;
-  if (!CurrentSlideComponent || typeof CurrentSlideComponent !== 'function') { console.error(`Slide component for index ${currentSlide} is invalid.`); return <div>Error loading slide component.</div>; }
-  
-  // This layout creates a fixed-height content area that scrolls, and a fixed-bottom nav bar
+  if (!CurrentSlideComponent || typeof CurrentSlideComponent !== 'function') {
+    console.error(`Slide component for index ${currentSlide} is invalid.`);
+    return <div>Error loading slide component.</div>;
+  }
+
   return (
     <div className="h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-4 md:p-8 flex flex-col">
-      <div className="max-w-6xl mx-auto flex flex-col flex-1 w-full min-h-0"> {/* min-h-0 is crucial for flex-1 to work in a flex parent */}
-        
+      <div className="max-w-6xl mx-auto flex flex-col flex-1 w-full min-h-0">
         {/* Slide Content Area (Scrollable) */}
         <div className="flex-1 overflow-y-auto mb-4 md:mb-6">
           <CurrentSlideComponent />
         </div>
-         
-         {/* Navigation Controls (Fixed Bottom) */}
-         <div className="flex-shrink-0">
-           {/* Desktop Navigator (hidden on mobile) */}
-           <div className="hidden md:flex items-center justify-between gap-4">
+
+        {/* Navigation Controls - single render, responsive via hook */}
+        <div className="flex-shrink-0">
+          {isMdUp ? (
+            // Desktop Navigator
+            <div className="flex items-center justify-between gap-4">
               <button
                 onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
                 disabled={currentSlide === 0}
@@ -627,12 +613,23 @@ export default function Presentation() {
                 <ChevronLeft className="h-5 w-5" />
                 Previous
               </button>
-              
+
               <div className="flex flex-col items-center w-full md:w-auto">
-                <div className="flex justify-center gap-2 mb-2">{slides.map((_, idx) => (<button key={idx} onClick={() => setCurrentSlide(idx)} className={`w-3 h-3 rounded-full transition-all ${idx === currentSlide ? 'bg-blue-600 w-6 md:w-8' : 'bg-slate-300 hover:bg-slate-400'}`} aria-label={`Go to slide ${idx + 1}`} />))}</div>
-                <div className="text-slate-600 text-sm text-center">Slide {currentSlide + 1} of {slides.length}: {slides[currentSlide].name}</div>
+                <div className="flex justify-center gap-2 mb-2">
+                  {slides.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`w-3 h-3 rounded-full transition-all ${idx === currentSlide ? 'bg-blue-600 w-6 md:w-8' : 'bg-slate-300 hover:bg-slate-400'}`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+                <div className="text-slate-600 text-sm text-center">
+                  Slide {currentSlide + 1} of {slides.length}: {slides[currentSlide].name}
+                </div>
               </div>
-              
+
               <button
                 onClick={() => setCurrentSlide(Math.min(slides.length - 1, currentSlide + 1))}
                 disabled={currentSlide === slides.length - 1}
@@ -641,18 +638,27 @@ export default function Presentation() {
                 Next
                 <ChevronRight className="h-5 w-5" />
               </button>
-           </div>
-           
-           {/* Mobile Navigator (stacks vertically, hidden on desktop) */}
-           <div className="flex flex-col items-center space-y-4 md:hidden">
-              {/* Dots/Counter are first */}
+            </div>
+          ) : (
+            // Mobile Navigator
+            <div className="flex flex-col items-center space-y-4">
               <div className="flex flex-col items-center w-full">
-                <div className="flex justify-center gap-2 mb-2">{slides.map((_, idx) => (<button key={idx} onClick={() => setCurrentSlide(idx)} className={`w-3 h-3 rounded-full transition-all ${idx === currentSlide ? 'bg-blue-600 w-6' : 'bg-slate-300 hover:bg-slate-400'}`} aria-label={`Go to slide ${idx + 1}`} />))}</div>
-                <div className="text-slate-600 text-sm text-center">Slide {currentSlide + 1} of {slides.length}: {slides[currentSlide].name}</div>
+                <div className="flex justify-center gap-2 mb-2">
+                  {slides.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`w-3 h-3 rounded-full transition-all ${idx === currentSlide ? 'bg-blue-600 w-6' : 'bg-slate-300 hover:bg-slate-400'}`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+                <div className="text-slate-600 text-sm text-center">
+                  Slide {currentSlide + 1} of {slides.length}: {slides[currentSlide].name}
+                </div>
               </div>
-              {/* Buttons are second, side-by-side */}
               <div className="flex w-full gap-4">
-                 <button
+                <button
                   onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
                   disabled={currentSlide === 0}
                   className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
@@ -660,7 +666,7 @@ export default function Presentation() {
                   <ChevronLeft className="h-5 w-5" />
                   Previous
                 </button>
-                 <button
+                <button
                   onClick={() => setCurrentSlide(Math.min(slides.length - 1, currentSlide + 1))}
                   disabled={currentSlide === slides.length - 1}
                   className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
@@ -669,11 +675,11 @@ export default function Presentation() {
                   <ChevronRight className="h-5 w-5" />
                 </button>
               </div>
-           </div>
-
+            </div>
+          )}
         </div>
+
       </div>
     </div>
   );
 }
-
