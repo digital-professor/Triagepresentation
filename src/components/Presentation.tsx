@@ -356,7 +356,7 @@ function ImprovedOutcomesSlide() {
           <div className="space-y-4">
             <div className="bg-white rounded-lg p-4"><div className="text-slate-600 text-sm mb-1">Actual Workload</div><div className="text-2xl font-bold text-green-600">~9.75 hours</div><div className="text-sm text-slate-600">(11 High Prio + 2 Known Cases) × 45min</div></div>
             <div className="bg-white rounded-lg p-4"><div className="text-slate-600 text-sm mb-1">Efficiency</div><div className="text-2xl font-bold text-green-600">~79%</div><div className="text-sm text-slate-600">Pre-filtered 25 low-priority/late cases</div></div>
-            <div className="bg-white rounded-lg p-4"><div className="text-slate-600 text-sm mb-1">Student Engagement</div><div className="text-2xl font-bold text-green-600">~63%</</div><div className="text-sm text-slate-600">38/60 responded (excl. duplicates)</div></div>
+            <div className="bg-white rounded-lg p-4"><div className="text-slate-600 text-sm mb-1">Student Engagement</div><div className="text-2xl font-bold text-green-600">~63%</div><div className="text-sm text-slate-600">38/60 responded (excl. duplicates)</div></div>
           </div>
         </div>
       </div>
