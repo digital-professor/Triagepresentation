@@ -50,9 +50,9 @@ function TitleSlide() {
       <div className="flex items-center gap-4 mb-8">
         <GraduationCap className="h-12 w-12 md:h-16 md:w-16" />
       </div>
-      {/* Removed text-white from h1, kept text-blue-300 on span */}
+      {/* FIXED: Removed text-white from h1, changed color to text-blue-200 */}
       <h1 className="mb-6 leading-tight font-bold text-3xl md:text-4xl text-center text-balance max-w-3xl">
-        <span className="font-semibold text-blue-300">AI-Enhanced</span> Proactive Triage Pilot: From Reactive Bottleneck to Student Retention Pathway
+        <span className="font-semibold text-blue-200">AI-Enhanced</span> Proactive Triage Pilot: From Reactive Bottleneck to Student Retention Pathway
       </h1>
       <h2 className="mb-12 text-blue-100 text-center text-balance max-w-2xl">
         Analysing the BFS Cohort to Create a Pathway for Student Success
@@ -592,13 +592,15 @@ export default function Presentation() {
     <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-4 md:p-8">
       <div className="max-w-6xl mx-auto">
         <div className="mb-6"><CurrentSlideComponent /></div>
+         
          {/* Navigation Controls - Stacks vertically on mobile */}
-         <div className="flex flex-col items-center space-y-4 md:flex-row md:justify-between md:space-y-0 gap-4 mt-8"> {/* Stack vertically, add space-y-4 for mobile */}
-          {/* Previous Button - Full width on mobile */}
+         {/* FIXED: Removed order classes, simpler flex-col */}
+         <div className="flex flex-col items-center space-y-4 md:flex-row md:justify-between md:space-y-0 gap-4 mt-8">
+          
+          {/* Previous Button - Full width on mobile, auto on desktop */}
           <button
             onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
             disabled={currentSlide === 0}
-             // Added w-full md:w-auto
             className="w-full md:w-auto flex flex-shrink-0 items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -606,7 +608,7 @@ export default function Presentation() {
           </button>
 
           {/* Slide Indicator Dots and Counter - Centered */}
-          <div className="flex flex-col items-center w-full md:w-auto"> {/* Removed mb-4 md:mb-0 */}
+          <div className="flex flex-col items-center w-full md:w-auto">
             <div className="flex justify-center gap-2 mb-2">{slides.map((_, idx) => (<button key={idx} onClick={() => setCurrentSlide(idx)} className={`w-3 h-3 rounded-full transition-all ${idx === currentSlide ? 'bg-blue-600 w-6 md:w-8' : 'bg-slate-300 hover:bg-slate-400'}`} aria-label={`Go to slide ${idx + 1}`} />))}</div>
             <div className="text-slate-600 text-sm text-center">Slide {currentSlide + 1} of {slides.length}: {slides[currentSlide].name}</div>
           </div>
@@ -615,7 +617,6 @@ export default function Presentation() {
           <button
             onClick={() => setCurrentSlide(Math.min(slides.length - 1, currentSlide + 1))}
             disabled={currentSlide === slides.length - 1}
-            // Added w-full md:w-auto
             className="w-full md:w-auto flex flex-shrink-0 items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
             Next
