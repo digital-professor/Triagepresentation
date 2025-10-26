@@ -715,9 +715,9 @@ export default function Presentation() {
         ) : (
           <div className="flex flex-col items-center gap-4 mt-8">
             {Indicator}
-            <div className="flex w-full gap-4">
-              <div className="flex-1">{PrevBtn}</div>
-              <div className="flex-1">{NextBtn}</div>
+            <div className="flex justify-center gap-4">
+              {PrevBtn}
+              {NextBtn}
             </div>
           </div>
         )}
