@@ -59,12 +59,12 @@ function useIsMdUp() {
 // --- Slide 1: TitleSlide ---
 function TitleSlide() {
   return (
-    <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl p-8 md:p-16 text-white shadow-2xl min-h-[500px] flex flex-col justify-center items-center">
+    <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl p-8 md:p-16 text-white shadow-2xl min-h-full flex flex-col justify-center items-center">
       <div className="flex items-center gap-4 mb-8">
         <GraduationCap className="h-12 w-12 md:h-16 md:w-16" />
       </div>
       <h1 className="mb-6 leading-tight font-bold text-3xl md:text-4xl text-center text-balance max-w-3xl">
-        <span className="font-semibold text-[rgb(124,166,211)]">AI-Enhanced</span> Proactive Triage Pilot: From Reactive Bottleneck to Student Retention Pathway
+        <span className="font-semibold" style={{ color: 'rgb(100, 207, 255)' }}>AI-Enhanced</span> Proactive Triage Pilot: From Reactive Bottleneck to Student Retention Pathway
       </h1>
       <h2 className="mb-12 text-blue-100 text-center text-balance max-w-2xl">
         Analysing the BFS Cohort to Create a Pathway for Student Success
@@ -81,7 +81,7 @@ function TitleSlide() {
 // --- Slide 2: ExecutiveSummarySlide ---
 function ExecutiveSummarySlide() {
   return (
-    <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl p-6 md:p-12 shadow-2xl text-white">
+    <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl p-6 md:p-12 shadow-2xl text-white min-h-full">
       <div className="flex items-center gap-3 mb-6">
         <Target className="h-10 w-10 text-emerald-400 flex-shrink-0" />
         <h1 className="text-white font-bold text-3xl">Executive Summary</h1>
@@ -133,7 +133,7 @@ function ExecutiveSummarySlide() {
 // --- Slide 3: ImprovedChallengeSlide ---
 function ImprovedChallengeSlide() {
   return (
-    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl">
+    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl min-h-full">
       <div className="flex items-center gap-3 mb-6">
         <AlertCircle className="h-10 w-10 text-red-600 flex-shrink-0" />
         <h1 className="text-slate-900 font-bold text-3xl">The Challenge: The BFS Cohort</h1>
@@ -190,7 +190,7 @@ function ImprovedChallengeSlide() {
 // --- Slide 4: SolutionSlide ---
 function SolutionSlide() {
   return (
-    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl">
+    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl min-h-full">
       <div className="flex items-center gap-3 mb-6">
         <Sparkles className="h-8 w-8 md:h-10 md:w-10 text-green-600 flex-shrink-0" />
         <h1 className="text-slate-900 font-bold text-3xl">The Solution: An Automated Triage Tool</h1>
@@ -255,7 +255,7 @@ function ProcessSlide() {
     { icon: Phone, title: "Action", description: "The tool generates clean, sorted Callback Lists for advisors.", color: "red" },
   ];
   return (
-    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl">
+    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl min-h-full">
        <div className="flex items-center gap-3 mb-4">
         <Workflow className="h-8 w-8 md:h-10 md:w-10 text-blue-600 flex-shrink-0" />
         <h1 className="text-slate-900 font-bold text-3xl">Mapping the Process: How It Works</h1>
@@ -290,7 +290,7 @@ function ImprovedFunnelSlide() {
     { value: 5, label: "New Viable CPR Cases (via Pilot)", icon: CheckCircle2, color: "emerald", pct: 13 },
   ];
   return (
-    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl">
+    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl min-h-full">
       <div className="flex items-center gap-3 mb-4">
         <Filter className="h-8 w-8 md:h-10 md:w-10 text-purple-600 flex-shrink-0" />
         <h1 className="text-slate-900 font-bold text-3xl">The Triage Funnel: Pilot Performance</h1>
@@ -337,7 +337,7 @@ function ImprovedFunnelSlide() {
 // --- Slide 7: ImprovedOutcomesSlide ---
 function ImprovedOutcomesSlide() {
   return (
-    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl">
+    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl min-h-full">
       <div className="flex items-center gap-3 mb-6">
         <TrendingUp className="h-10 w-10 text-green-600 flex-shrink-0" />
         <h1 className="text-slate-900 font-bold text-3xl">Pilot Outcomes: Measurable Impact</h1>
@@ -373,7 +373,7 @@ function ImprovedOutcomesSlide() {
 // --- Slide 8: AccuracySlide ---
 function AccuracySlide() {
   return (
-    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl">
+    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl min-h-full">
       <div className="flex items-center gap-3 mb-6">
         <Target className="h-8 w-8 md:h-10 md:w-10 text-green-600 flex-shrink-0" />
         <h1 className="text-slate-900 font-bold text-3xl">Triage Model Accuracy: Validation & Discovery</h1>
@@ -406,7 +406,7 @@ function InsightsSlide() {
     { icon: TrendingUp, number: "3", title: "Prevention Over Crisis Management", description: "The pilot identified students at multiple crisis stages. Using this tool earlier in-year would shift us from crisis management to crisis prevention, demonstrating a <span class='font-semibold'>strategic application of data analysis for proactive, targeted interventions</span>. Furthermore, the pilot identified <span class='font-semibold'>3 high-scoring students lacking current academic records</span>, suggesting early disengagement potentially preventable with this proactive model.", color: "orange", metrics: [{ value: "In-Year", label: "New Timing" }, { value: "Preventative", label: "New Model" }, { value: "Higher Retention", label: "Goal" }] },
   ];
   return (
-    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl">
+    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl min-h-full">
       <div className="flex items-center gap-3 mb-6"><Lightbulb className="h-8 w-8 md:h-10 md:w-10 text-yellow-600 flex-shrink-0" /><h1 className="text-slate-900 font-bold text-3xl">Strategic Analysis: What We Learned</h1></div>
       <h2 className="text-slate-600 mb-8">Three key insights derived from the pilot data to inform future operational strategy</h2>
       <div className="space-y-6 mb-8">
@@ -441,7 +441,7 @@ function InsightsSlide() {
 // --- Slide 10: StrategicAlignmentSlide ---
 function StrategicAlignmentSlide() {
   return (
-    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl">
+    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl min-h-full">
       <div className="flex items-center gap-3 mb-6">
         <University className="h-8 w-8 md:h-10 md:w-10 text-indigo-600 flex-shrink-0" />
         <h1 className="text-slate-900 font-bold text-3xl">Strategic Alignment & Capability Demonstration</h1>
@@ -496,7 +496,7 @@ function InvestmentSlide() {
     { icon: DatabaseZap , title: "Enhance Predictive Model Outreach", description: "Integrate triage *after* initial outreach from predictive models to provide efficient, targeted follow-up for complex cases identified *by advisors*."}
   ];
   return (
-    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl">
+    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl min-h-full">
       <div className="flex items-center gap-3 mb-6"><TrendingUp className="h-8 w-8 md:h-10 md:w-10 text-blue-600 flex-shrink-0" /><h1 className="text-slate-900 font-bold text-3xl">Investment for Future Potential</h1></div>
       <p className="text-slate-700 mb-8 leading-relaxed">This pilot successfully demonstrated the capability to build impactful tools within constraints. Realizing the full potential requires appropriate resources.</p>
       <h2 className="text-slate-900 mb-4">The Business Case for Investment</h2>
@@ -560,7 +560,7 @@ function RecommendationSlide() {
     { icon: Users, title: "Improve Retention", description: "Create a clear pathway to support at-risk students" }
   ];
   return (
-    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl">
+    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl min-h-full">
       <div className="flex items-center gap-3 mb-6"><CheckCircle className="h-8 w-8 md:h-10 md:w-10 text-green-600 flex-shrink-0" /><h1 className="text-slate-900 font-bold text-3xl">Primary Recommendation: Formalise and Scale</h1></div>
       <div className="bg-gradient-to-br from-green-500 to-green-700 rounded-2xl p-6 md:p-12 text-white mb-8 shadow-2xl">
         <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 mb-6">
@@ -600,7 +600,7 @@ function QASlide() {
     { label: "Revenue Protected (Pilot)", value: "~£40,000" }
   ];
   return (
-    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl">
+    <div className="bg-white rounded-xl p-6 md:p-12 shadow-xl min-h-full">
       <div className="flex items-center gap-3 mb-8"><MessageCircleQuestion className="h-10 w-10 md:h-12 md:w-12 text-blue-600 flex-shrink-0" /><h1 className="text-slate-900 font-bold text-3xl">Q&A / Next Steps</h1></div>
       <h2 className="text-slate-900 mb-8">Questions & Discussion</h2>
       <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 md:p-10 mb-8 border-2 border-blue-200">
