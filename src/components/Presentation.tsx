@@ -50,9 +50,9 @@ function TitleSlide() {
       <div className="flex items-center gap-4 mb-8">
         <GraduationCap className="h-12 w-12 md:h-16 md:w-16" />
       </div>
-      <h1 className="mb-6 text-white leading-tight font-bold text-3xl md:text-4xl text-center text-balance max-w-3xl">
-        {/* Changed text-blue-300 to text-blue-200 for better contrast */}
-        <span className="font-semibold text-blue-200">AI-Enhanced</span> Proactive Triage Pilot: From Reactive Bottleneck to Student Retention Pathway
+      {/* Removed text-white from h1, kept text-blue-300 on span */}
+      <h1 className="mb-6 leading-tight font-bold text-3xl md:text-4xl text-center text-balance max-w-3xl">
+        <span className="font-semibold text-blue-300">AI-Enhanced</span> Proactive Triage Pilot: From Reactive Bottleneck to Student Retention Pathway
       </h1>
       <h2 className="mb-12 text-blue-100 text-center text-balance max-w-2xl">
         Analysing the BFS Cohort to Create a Pathway for Student Success
@@ -626,3 +626,5 @@ export default function Presentation() {
     </div>
   );
 }
+
+
