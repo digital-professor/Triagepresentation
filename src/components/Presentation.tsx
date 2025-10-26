@@ -303,11 +303,11 @@ function ImprovedFunnelSlide() {
       </div>
       <div className="grid md:grid-cols-3 gap-6">
         <div className="bg-green-50 rounded-lg p-6 border-2 border-green-200">
-          <div className="flex items-center gap-3 mb-3"><Clock className="h-8 w-8 text-green-600" /><h3 className="text-slate-900 font-bold">16.5 Hours Saved</h3></div> {/* (38 responses - 11 high prio - 2 known) = 25 filtered * 0.75 hrs -> Corrected calc is 22 * 0.75 = 16.5 */}
-          <p className="text-slate-700 mb-2">Filtered out 22 low-priority/no-callback cases</p><p className="text-sm text-slate-600 italic">Calculation: 22 × 45min per appointment</p> {/* (27 total filtered - 5 duplicates already removed earlier) = 22 */}
+          <div className="flex items-center gap-3 mb-3"><Clock className="h-8 w-8 text-green-600" /><h3 className="text-slate-900 font-bold">16.5 Hours Saved</h3></div>
+          <p className="text-slate-700 mb-2">Filtered out 22 low-priority/no-callback cases</p><p className="text-sm text-slate-600 italic">Calculation: 22 × 45min per appointment</p>
         </div>
         <div className="bg-purple-50 rounded-lg p-6 border-2 border-purple-200">
-          <div className="flex items-center gap-3 mb-3"><TrendingUp className="h-8 w-8 text-purple-600" /><h3 className="text-slate-900 font-bold">~79% Efficiency Gain</h3></div> {/* (45 - (11+2)*0.75)/45 = 78.3% */}
+          <div className="flex items-center gap-3 mb-3"><TrendingUp className="h-8 w-8 text-purple-600" /><h3 className="text-slate-900 font-bold">~79% Efficiency Gain</h3></div>
           <p className="text-slate-700">Reduced 45hr potential workload to a ~9.75hr actual workload (11 High Prio + 2 Known)</p>
         </div>
         <div className="bg-blue-50 rounded-lg p-6 border-2 border-blue-200">
@@ -339,8 +339,8 @@ function ImprovedOutcomesSlide() {
         <div className="bg-green-50 rounded-xl p-6 border-2 border-green-300">
           <h2 className="text-slate-900 mb-4 flex items-center gap-2"><TrendingUp className="h-6 w-6 text-green-600" />Proactive Triage Model</h2>
           <div className="space-y-4">
-            <div className="bg-white rounded-lg p-4"><div className="text-slate-600 text-sm mb-1">Actual Workload</div><div className="text-2xl font-bold text-green-600">~9.75 hours</div><div className="text-sm text-slate-600">(11 High Prio + 2 Known Cases) × 45min</div></div> {/* Updated */}
-            <div className="bg-white rounded-lg p-4"><div className="text-slate-600 text-sm mb-1">Efficiency</div><div className="text-2xl font-bold text-green-600">~79%</div><div className="text-sm text-slate-600">Pre-filtered 25 low-priority/late cases</div></div> {/* Updated */}
+            <div className="bg-white rounded-lg p-4"><div className="text-slate-600 text-sm mb-1">Actual Workload</div><div className="text-2xl font-bold text-green-600">~9.75 hours</div><div className="text-sm text-slate-600">(11 High Prio + 2 Known Cases) × 45min</div></div>
+            <div className="bg-white rounded-lg p-4"><div className="text-slate-600 text-sm mb-1">Efficiency</div><div className="text-2xl font-bold text-green-600">~79%</div><div className="text-sm text-slate-600">Pre-filtered 25 low-priority/late cases</div></div>
             <div className="bg-white rounded-lg p-4"><div className="text-slate-600 text-sm mb-1">Student Engagement</div><div className="text-2xl font-bold text-green-600">~63%</div><div className="text-sm text-slate-600">38/60 responded (excl. duplicates)</div></div>
           </div>
         </div>
@@ -349,7 +349,7 @@ function ImprovedOutcomesSlide() {
         This demonstrates a <span className="font-semibold">transformational shift</span> from a reactive, low-yield model to a proactive, high-efficiency process, proving the value proposition of using automation to <span className="font-semibold">enhance our Student Advice team's workflow and efficiency</span>.
       </p>
       <div className="bg-gradient-to-br from-green-500 to-green-700 rounded-2xl p-8 text-white text-center shadow-2xl mt-8">
-        <PoundSterling className="h-16 w-16 mx-auto mb-4 opacity-90" /><div className="text-5xl font-bold mb-3">£40,000</div><h2 className="text-2xl mb-3 text-white">Revenue at Risk - Now Addressed</h2><p className="text-green-100 max-w-2xl mx-auto leading-relaxed">Outstanding fees for <span className="font-bold">5 newly identified CPR cases</span> now receiving targeted advisor support initiated by this pilot.</p> {/* Updated */}
+        <PoundSterling className="h-16 w-16 mx-auto mb-4 opacity-90" /><div className="text-5xl font-bold mb-3">£40,000</div><h2 className="text-2xl mb-3 text-white">Revenue at Risk - Now Addressed</h2><p className="text-green-100 max-w-2xl mx-auto leading-relaxed">Outstanding fees for <span className="font-bold">5 newly identified CPR cases</span> now receiving targeted advisor support initiated by this pilot.</p>
       </div>
     </div>
   );
@@ -377,9 +377,9 @@ function AccuracySlide() {
           <UserSearch className="h-10 w-10 md:h-12 md:w-12 text-blue-600 mb-4" /><h2 className="text-slate-900 mb-4">Discovery: Identifying New Cases</h2><div className="bg-white rounded-lg p-4 mb-4"><div className="font-bold text-blue-600 mb-2" style={{ fontSize: "2rem" }}>5 New CPR Cases</div><div className="text-slate-700">Found from 8 New Targets</div></div>
           <p className="text-slate-700">Of the remaining 9 high scorers (excluding 2 known), 1 submitted late. 8 were targeted for outreach. <span className="font-semibold">5 viable CPR cases</span> were confirmed upon contact (from 5/8 calls answered), focusing intervention effectively.</p>
         </div>
-        {/* Key Finding Box */}
+        {/* Key Finding Box - BOLD FIXED & 70k context added */}
         <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 border-2 border-purple-200">
-          <Target className="h-10 w-10 md:h-12 md:w-12 text-purple-600 mb-4" /><h2 className="text-slate-900 mb-4">Key Finding: Efficient & Accurate</h2><p className="text-slate-700 mb-4">The triage logic is <span className="font-semibold text-purple-600">sound and validated</span>. It accurately identifies <span className="font-semibold">both known complex cases</span> and <span className="font-semibold">new potential CPR candidates</span>, while successfully filtering out <span className="font-semibold">27 lower-priority/late responses</span> (27/38). The 11 high-priority students identified represent a total potential revenue risk of ~£70k.</p><div className="bg-purple-200 text-purple-900 rounded-lg p-4 text-center"><div className="font-semibold">Model Validated ✓</div></div> {/* Added £70k context */}
+          <Target className="h-10 w-10 md:h-12 md:w-12 text-purple-600 mb-4" /><h2 className="text-slate-900 mb-4">Key Finding: Efficient & Accurate</h2><p className="text-slate-700 mb-4">The triage logic is <span className="font-semibold text-purple-600">sound and validated</span>. It accurately identifies <span className="font-semibold">both known complex cases</span> and <span className="font-semibold">new potential CPR candidates</span>, while successfully filtering out <span className="font-semibold">27 lower-priority/late responses</span> (27/38). The 11 high-priority students identified represent a total potential revenue risk of ~£70k.</p><div className="bg-purple-200 text-purple-900 rounded-lg p-4 text-center"><div className="font-semibold">Model Validated ✓</div></div>
         </div>
       </div>
     </div>
@@ -408,6 +408,7 @@ function InsightsSlide() {
                 <div className={`bg-gradient-to-br ${colorClasses[insight.color].split(' ')[0]} ${colorClasses[insight.color].split(' ')[1].replace('bg-', 'to-')} rounded-full p-3 md:p-4 text-white flex-shrink-0`}><Icon className="h-6 w-6 md:h-8 md:w-8" /></div>
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-2 mb-3"><span className="font-bold text-slate-900">Insight {insight.number}:</span><h2 className="text-slate-900">{insight.title}</h2></div>
+                  {/* Use dangerouslySetInnerHTML for the span tags in description */}
                   <p className="text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: insight.description }}></p>
                 </div>
               </div>
@@ -478,7 +479,7 @@ function StrategicAlignmentSlide() {
 }
 
 
-// --- Slide 11: InvestmentSlide (Revised for Team Focus, No Cost, Secured Resources - becomes Slide 12) ---
+// --- Slide 11: InvestmentSlide (Revised for Team Focus, No Cost, Secured Resources - becomes Slide 12, BOLD FIXED) ---
 function InvestmentSlide() {
   const futureApplications = [
     { icon: UserCheck, title: "Early Intervention Model", description: "Apply proactively during the academic year (e.g., by January) to identify students without confirmed funding." },
@@ -517,7 +518,7 @@ function InvestmentSlide() {
           <h2 className="text-slate-900 mb-4">Future Applications (Scaling Out)</h2><div className="space-y-4">{futureApplications.map((item, index) => { const Icon = item.icon; return (<div key={index} className="bg-slate-50 border-l-4 border-slate-400 rounded-lg p-4 flex items-start gap-4"><Icon className="h-6 w-6 text-slate-600 flex-shrink-0 mt-1" /><div><h3 className="text-slate-900">{item.title}</h3><p className="text-slate-700 text-sm">{item.description}</p></div></div>); })}</div>
         </div>
         <div>
-          <h2 className="text-slate-900 mb-4">Future Automation (Scaling Up)</h2><div className="space-y-4">{futureAutomations.map((item, index) => { const Icon = item.icon; return (<div key={index} className="bg-slate-50 border-l-4 border-slate-400 rounded-lg p-4 flex items-start gap-4"><Icon className="h-6 w-6 text-slate-600 flex-shrink-0 mt-1" /><div><h3 className="text-slate-900">{item.title}</h3><p className="text-slate-700 text-sm">{item.description}</p></div></div>); })}</div>
+          <h2 className="text-slate-900 mb-4">Future Automation (Scaling Up)</h2><div className="space-y-4">{futureAutomations.map((item, index) => { const Icon = item.icon; return (<div key={index} className="bg-slate-50 border-l-4 border-slate-400 rounded-lg p-4 flex items-start gap-4"><Icon className="h-6 w-6 text-slate-600 flex-shrink-0 mt-1" /><div><h3 className="text-slate-900">{item.title}</h3>{/* Fix potential markdown italics */} <p className="text-slate-700 text-sm" dangerouslySetInnerHTML={{ __html: item.description.replace(/\*(.*?)\*/g, "<i>$1</i>") }}></p></div></div>); })}</div>
         </div>
       </div>
     </div>
@@ -565,7 +566,7 @@ function QASlide() {
 }
 
 
-// --- Main App Component (Slide Navigator - Adjusted for 14 Slides) ---
+// --- Main App Component (Slide Navigator - FINAL MOBILE FIX) ---
 export default function Presentation() {
   const slides = [
     { name: "Title", component: TitleSlide },
@@ -590,13 +591,33 @@ export default function Presentation() {
     <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-4 md:p-8">
       <div className="max-w-6xl mx-auto">
         <div className="mb-6"><CurrentSlideComponent /></div>
-        <div className="flex items-center justify-between gap-4 mt-8">
-          <button onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))} disabled={currentSlide === 0} className="flex items-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"><ChevronLeft className="h-5 w-5" />Previous</button>
-          <div className="flex flex-col items-center">
-            <div className="flex gap-2 mb-2">{slides.map((_, idx) => (<button key={idx} onClick={() => setCurrentSlide(idx)} className={`w-3 h-3 rounded-full transition-all ${idx === currentSlide ? 'bg-blue-600 w-8' : 'bg-slate-300 hover:bg-slate-400'}`} aria-label={`Go to slide ${idx + 1}`} />))}</div>
-            <div className="text-slate-600 text-sm">Slide {currentSlide + 1} of {slides.length}: {slides[currentSlide].name}</div>
+         {/* Navigation Controls - Stacks vertically on mobile */}
+         <div className="flex flex-col md:flex-row items-center md:justify-between gap-4 mt-8"> {/* Stack vertically by default */}
+          {/* Previous Button - Full width on mobile */}
+          <button
+            onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
+            disabled={currentSlide === 0}
+            className="w-full md:w-auto flex flex-shrink-0 items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all order-2 md:order-1" /* Order changed for mobile */
+          >
+            <ChevronLeft className="h-5 w-5" />
+            Previous
+          </button>
+
+          {/* Slide Indicator Dots and Counter - Centered */}
+          <div className="flex flex-col items-center order-1 md:order-2 mb-4 md:mb-0"> {/* Order first on mobile */}
+            <div className="flex gap-2 mb-2">{slides.map((_, idx) => (<button key={idx} onClick={() => setCurrentSlide(idx)} className={`w-3 h-3 rounded-full transition-all ${idx === currentSlide ? 'bg-blue-600 w-6 md:w-8' : 'bg-slate-300 hover:bg-slate-400'}`} aria-label={`Go to slide ${idx + 1}`} />))}</div>
+            <div className="text-slate-600 text-sm text-center">Slide {currentSlide + 1} of {slides.length}: {slides[currentSlide].name}</div>
           </div>
-          <button onClick={() => setCurrentSlide(Math.min(slides.length - 1, currentSlide + 1))} disabled={currentSlide === slides.length - 1} className="flex items-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all">Next<ChevronRight className="h-5 w-5" /></button>
+
+          {/* Next Button - Full width on mobile */}
+          <button
+            onClick={() => setCurrentSlide(Math.min(slides.length - 1, currentSlide + 1))}
+            disabled={currentSlide === slides.length - 1}
+            className="w-full md:w-auto flex flex-shrink-0 items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all order-3 md:order-3"
+          >
+            Next
+            <ChevronRight className="h-5 w-5" />
+          </button>
         </div>
       </div>
     </div>
