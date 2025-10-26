@@ -594,14 +594,13 @@ export default function Presentation() {
         <div className="mb-6"><CurrentSlideComponent /></div>
          
          {/* Navigation Controls - Stacks vertically on mobile */}
-         {/* FIXED: Removed order classes, simpler flex-col */}
          <div className="flex flex-col items-center space-y-4 md:flex-row md:justify-between md:space-y-0 gap-4 mt-8">
           
-          {/* Previous Button - Full width on mobile, auto on desktop */}
+          {/* Previous Button (Hidden on mobile, shown on desktop) */}
           <button
             onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
             disabled={currentSlide === 0}
-            className="w-full md:w-auto flex flex-shrink-0 items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            className="hidden md:flex flex-shrink-0 items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
             <ChevronLeft className="h-5 w-5" />
             Previous
@@ -613,15 +612,36 @@ export default function Presentation() {
             <div className="text-slate-600 text-sm text-center">Slide {currentSlide + 1} of {slides.length}: {slides[currentSlide].name}</div>
           </div>
 
-          {/* Next Button - Full width on mobile */}
+          {/* Next Button (Hidden on mobile, shown on desktop) */}
           <button
             onClick={() => setCurrentSlide(Math.min(slides.length - 1, currentSlide + 1))}
             disabled={currentSlide === slides.length - 1}
-            className="w-full md:w-auto flex flex-shrink-0 items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            className="hidden md:flex flex-shrink-0 items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
             Next
             <ChevronRight className="h-5 w-5" />
           </button>
+
+          {/* Wrapper for Mobile Buttons (Side-by-side, full width) */}
+          <div className="flex md:hidden w-full gap-4">
+             <button
+              onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
+              disabled={currentSlide === 0}
+              className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            >
+              <ChevronLeft className="h-5 w-5" />
+              Previous
+            </button>
+             <button
+              onClick={() => setCurrentSlide(Math.min(slides.length - 1, currentSlide + 1))}
+              disabled={currentSlide === slides.length - 1}
+              className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            >
+              Next
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+
         </div>
       </div>
     </div>
