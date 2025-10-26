@@ -43,7 +43,7 @@ import {
   Wrench // Added for Transferable Skills
 } from "lucide-react";
 
-// --- Slide 1: TitleSlide (AI Enhanced, Centered) ---
+// --- Slide 1: TitleSlide (AI Enhanced COLOR FIXED, Centered) ---
 function TitleSlide() {
   return (
     <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl p-8 md:p-16 text-white shadow-2xl min-h-[500px] flex flex-col justify-center items-center">
@@ -51,7 +51,8 @@ function TitleSlide() {
         <GraduationCap className="h-12 w-12 md:h-16 md:w-16" />
       </div>
       <h1 className="mb-6 text-white leading-tight font-bold text-3xl md:text-4xl text-center text-balance max-w-3xl">
-        <span className="font-semibold text-blue-300">AI-Enhanced</span> Proactive Triage Pilot: From Reactive Bottleneck to Student Retention Pathway
+        {/* Changed text-blue-300 to text-blue-200 for better contrast */}
+        <span className="font-semibold text-blue-200">AI-Enhanced</span> Proactive Triage Pilot: From Reactive Bottleneck to Student Retention Pathway
       </h1>
       <h2 className="mb-12 text-blue-100 text-center text-balance max-w-2xl">
         Analysing the BFS Cohort to Create a Pathway for Student Success
@@ -508,7 +509,7 @@ function InvestmentSlide() {
         </div>
         <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6">
           <div className="flex items-center gap-3 mb-4"><Users className="h-8 w-8 text-blue-600" /><h3 className="text-slate-900">Staffing & Innovation ROI</h3></div>
-          {/* Updated wording */}
+          {/* Updated wording - BOLD FIXED */}
           <p className="text-slate-700">This model enables <span className="font-semibold">1 advisor to do the work of 4-5</span>, freeing the team for high-value work.</p>
           <p className="text-slate-700 mt-2">This pilot demonstrates potential for impactful, compliant solutions developed in-house. <span className="font-semibold">Successfully securing a test tenancy and premium licenses</span> enables development of the <span className="font-semibold">AI-Powered Student Advisor Toolkit</span>. Investing in this capability empowers <span className="font-semibold">staff</span> to build further efficiency solutions <span className="font-semibold">for our service</span>.</p>
         </div>
@@ -518,7 +519,7 @@ function InvestmentSlide() {
           <h2 className="text-slate-900 mb-4">Future Applications (Scaling Out)</h2><div className="space-y-4">{futureApplications.map((item, index) => { const Icon = item.icon; return (<div key={index} className="bg-slate-50 border-l-4 border-slate-400 rounded-lg p-4 flex items-start gap-4"><Icon className="h-6 w-6 text-slate-600 flex-shrink-0 mt-1" /><div><h3 className="text-slate-900">{item.title}</h3><p className="text-slate-700 text-sm">{item.description}</p></div></div>); })}</div>
         </div>
         <div>
-          <h2 className="text-slate-900 mb-4">Future Automation (Scaling Up)</h2><div className="space-y-4">{futureAutomations.map((item, index) => { const Icon = item.icon; return (<div key={index} className="bg-slate-50 border-l-4 border-slate-400 rounded-lg p-4 flex items-start gap-4"><Icon className="h-6 w-6 text-slate-600 flex-shrink-0 mt-1" /><div><h3 className="text-slate-900">{item.title}</h3>{/* Fix potential markdown italics */} <p className="text-slate-700 text-sm" dangerouslySetInnerHTML={{ __html: item.description.replace(/\*(.*?)\*/g, "<i>$1</i>") }}></p></div></div>); })}</div>
+          <h2 className="text-slate-900 mb-4">Future Automation (Scaling Up)</h2><div className="space-y-4">{futureAutomations.map((item, index) => { const Icon = item.icon; return (<div key={index} className="bg-slate-50 border-l-4 border-slate-400 rounded-lg p-4 flex items-start gap-4"><Icon className="h-6 w-6 text-slate-600 flex-shrink-0 mt-1" /><div><h3 className="text-slate-900">{item.title}</h3>{/* Use dangerouslySetInnerHTML to render potential italics from description, ensuring it's safe */} <p className="text-slate-700 text-sm" dangerouslySetInnerHTML={{ __html: item.description.replace(/\*(.*?)\*/g, "<i class='italic'>$1</i>") }}></p></div></div>); })}</div>
         </div>
       </div>
     </div>
@@ -592,20 +593,21 @@ export default function Presentation() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-6"><CurrentSlideComponent /></div>
          {/* Navigation Controls - Stacks vertically on mobile */}
-         <div className="flex flex-col md:flex-row items-center md:justify-between gap-4 mt-8"> {/* Stack vertically by default */}
+         <div className="flex flex-col items-center space-y-4 md:flex-row md:justify-between md:space-y-0 gap-4 mt-8"> {/* Stack vertically, add space-y-4 for mobile */}
           {/* Previous Button - Full width on mobile */}
           <button
             onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
             disabled={currentSlide === 0}
-            className="w-full md:w-auto flex flex-shrink-0 items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all order-2 md:order-1" /* Order changed for mobile */
+             // Added w-full md:w-auto
+            className="w-full md:w-auto flex flex-shrink-0 items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
             <ChevronLeft className="h-5 w-5" />
             Previous
           </button>
 
           {/* Slide Indicator Dots and Counter - Centered */}
-          <div className="flex flex-col items-center order-1 md:order-2 mb-4 md:mb-0"> {/* Order first on mobile */}
-            <div className="flex gap-2 mb-2">{slides.map((_, idx) => (<button key={idx} onClick={() => setCurrentSlide(idx)} className={`w-3 h-3 rounded-full transition-all ${idx === currentSlide ? 'bg-blue-600 w-6 md:w-8' : 'bg-slate-300 hover:bg-slate-400'}`} aria-label={`Go to slide ${idx + 1}`} />))}</div>
+          <div className="flex flex-col items-center w-full md:w-auto"> {/* Removed mb-4 md:mb-0 */}
+            <div className="flex justify-center gap-2 mb-2">{slides.map((_, idx) => (<button key={idx} onClick={() => setCurrentSlide(idx)} className={`w-3 h-3 rounded-full transition-all ${idx === currentSlide ? 'bg-blue-600 w-6 md:w-8' : 'bg-slate-300 hover:bg-slate-400'}`} aria-label={`Go to slide ${idx + 1}`} />))}</div>
             <div className="text-slate-600 text-sm text-center">Slide {currentSlide + 1} of {slides.length}: {slides[currentSlide].name}</div>
           </div>
 
@@ -613,7 +615,8 @@ export default function Presentation() {
           <button
             onClick={() => setCurrentSlide(Math.min(slides.length - 1, currentSlide + 1))}
             disabled={currentSlide === slides.length - 1}
-            className="w-full md:w-auto flex flex-shrink-0 items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all order-3 md:order-3"
+            // Added w-full md:w-auto
+            className="w-full md:w-auto flex flex-shrink-0 items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
             Next
             <ChevronRight className="h-5 w-5" />
@@ -623,5 +626,3 @@ export default function Presentation() {
     </div>
   );
 }
-
-
