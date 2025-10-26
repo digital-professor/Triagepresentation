@@ -64,15 +64,15 @@ function TitleSlide() {
         <GraduationCap className="h-12 w-12 md:h-16 md:w-16" />
       </div>
       <h1 className="mb-6 leading-tight font-bold text-3xl md:text-4xl text-center text-balance max-w-3xl">
-        <span className="font-semibold text-blue-200">AI-Enhanced</span> Proactive Triage Pilot: From Reactive Bottleneck to Student Retention Pathway
+        <span className="font-semibold text-[rgb(124,166,211)]">AI-Enhanced</span> Proactive Triage Pilot: From Reactive Bottleneck to Student Retention Pathway
       </h1>
       <h2 className="mb-12 text-blue-100 text-center text-balance max-w-2xl">
         Analysing the BFS Cohort to Create a Pathway for Student Success
       </h2>
       <div className="space-y-2 text-blue-100 text-center md:text-left">
-        <p><span className="font-semibold text-white">Presented by:</span> Mr. X</p>
+        <p><span className="font-semibold text-white">Presented by:</span> Yasser Riaz</p>
         <p><span className="font-semibold text-white">Role:</span> Senior Student Advisor</p>
-        <p><span className="font-semibold text-white">Date:</span> 23 October 2025</p>
+        <p><span className="font-semibold text-white">Date:</span> 27 October 2025</p>
       </div>
     </div>
   );
@@ -702,18 +702,21 @@ export default function Presentation() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-4 md:p-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-6"><CurrentSlideComponent /></div>
+      <div className="max-w-6xl mx-auto flex flex-col h-[calc(100vh-2rem)] md:h-[calc(100vh-4rem)]">
+        {/* Fixed-height scrollable slide container */}
+        <div className="flex-1 overflow-y-auto mb-6 scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-200">
+          <CurrentSlideComponent />
+        </div>
 
-        {/* ONE navigation block: desktop vs mobile layout */}
+        {/* Fixed navigation at bottom */}
         {isMdUp ? (
-          <div className="flex items-center justify-between gap-4 mt-8">
+          <div className="flex items-center justify-between gap-4 flex-shrink-0">
             {PrevBtn}
             {Indicator}
             {NextBtn}
           </div>
         ) : (
-          <div className="flex flex-col items-center gap-4 mt-8">
+          <div className="flex flex-col items-center gap-4 flex-shrink-0">
             {Indicator}
             <div className="flex justify-center gap-4">
               {PrevBtn}
