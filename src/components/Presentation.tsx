@@ -702,9 +702,12 @@ export default function Presentation() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-4 md:p-8">
-      <div className="max-w-6xl mx-auto flex flex-col h-[calc(100vh-2rem)] md:h-[calc(100vh-4rem)]">
+      <div className="max-w-6xl mx-auto flex flex-col" style={{ height: 'calc(100vh - 2rem)' }}>
         {/* Fixed-height scrollable slide container */}
-        <div className="flex-1 overflow-y-auto mb-6 scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-200">
+        <div className="flex-1 overflow-y-auto mb-6" style={{ 
+          scrollbarWidth: 'thin',
+          scrollbarColor: '#94a3b8 #e2e8f0'
+        }}>
           <CurrentSlideComponent />
         </div>
 
