@@ -147,7 +147,7 @@ function ImprovedChallengeSlide() {
         <div className="grid md:grid-cols-3 gap-6 mb-4">
           <div className="text-center">
             <div className="text-4xl font-bold text-red-600 mb-2">~60</div>
-            <div className="text-slate-700 text-sm">Students with outstanding fees (BFS) annually</div>
+            <div className="text-slate-700 text-sm">Students with outstanding fees (BFS)</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold text-red-600 mb-2">45min</div>
