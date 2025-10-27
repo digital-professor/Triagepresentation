@@ -593,103 +593,93 @@ export default function Presentation() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-4 md:p-8">
-      <div className="max-w-6xl mx-auto flex flex-col" style={{ height: 'calc(100vh - 2rem)' }}>
-        {/* Fixed-height scrollable slide container */}
-        <div className="flex-1 overflow-y-auto mb-6" style={{ 
-          scrollbarWidth: 'thin',
-          scrollbarColor: '#94a3b8 #e2e8f0'
-        }}>
+    <div className="h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-4 md:p-8 flex flex-col">
+      <div className="max-w-6xl mx-auto flex flex-col flex-1 w-full min-h-0">
+        {/* Slide Content Area (Scrollable) */}
+        <div className="flex-1 overflow-y-auto mb-4 md:mb-6">
           <CurrentSlideComponent />
         </div>
 
-        {/* Fixed Navigation Controls */}
+        {/* Navigation Controls - single render, responsive via hook */}
         <div className="flex-shrink-0">
-  <div className="mx-auto max-w-6xl px-4 md:px-8 pb-[env(safe-area-inset-bottom)]">
-    <div className="rounded-t-xl bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 shadow-lg border border-slate-200 p-3 md:p-4">
-      {isMdUp ? (
-        // Desktop Navigator
-        <div className="flex items-center justify-between gap-4">
-          <button
-            onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
-            disabled={currentSlide === 0}
-            className="flex flex-shrink-0 items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-          >
-            <ChevronLeft className="h-5 w-5" />
-            Previous
-          </button>
+          {isMdUp ? (
+            // Desktop Navigator
+            <div className="flex items-center justify-between gap-4">
+              <button
+                onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
+                disabled={currentSlide === 0}
+                className="flex flex-shrink-0 items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+              >
+                <ChevronLeft className="h-5 w-5" />
+                Previous
+              </button>
 
-          <div className="flex flex-col items-center w-full">
-            <div className="flex justify-center gap-2 mb-2">
-              {slides.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentSlide(idx)}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    idx === currentSlide ? 'bg-blue-600 w-6 md:w-8' : 'bg-slate-300 hover:bg-slate-400'
-                  }`}
-                  aria-label={`Go to slide ${idx + 1}`}
-                />
-              ))}
-            </div>
-            <div className="text-slate-600 text-sm text-center">
-              Slide {currentSlide + 1} of {slides.length}: {slides[currentSlide].name}
-            </div>
-          </div>
+              <div className="flex flex-col items-center w-full md:w-auto">
+                <div className="flex justify-center gap-2 mb-2">
+                  {slides.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`w-3 h-3 rounded-full transition-all ${idx === currentSlide ? 'bg-blue-600 w-6 md:w-8' : 'bg-slate-300 hover:bg-slate-400'}`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+                <div className="text-slate-600 text-sm text-center">
+                  Slide {currentSlide + 1} of {slides.length}: {slides[currentSlide].name}
+                </div>
+              </div>
 
-          <button
-            onClick={() => setCurrentSlide(Math.min(slides.length - 1, currentSlide + 1))}
-            disabled={currentSlide === slides.length - 1}
-            className="flex flex-shrink-0 items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-          >
-            Next
-            <ChevronRight className="h-5 w-5" />
-          </button>
-        </div>
-      ) : (
-        // Mobile Navigator
-        <div className="flex flex-col items-center space-y-4">
-          <div className="flex flex-col items-center w-full">
-            <div className="flex justify-center gap-2 mb-2">
-              {slides.map((_, idx) => (
+              <button
+                onClick={() => setCurrentSlide(Math.min(slides.length - 1, currentSlide + 1))}
+                disabled={currentSlide === slides.length - 1}
+                className="flex flex-shrink-0 items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+              >
+                Next
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
+          ) : (
+            // Mobile Navigator
+            <div className="flex flex-col items-center space-y-4">
+              <div className="flex flex-col items-center w-full">
+                <div className="flex justify-center gap-2 mb-2">
+                  {slides.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`w-3 h-3 rounded-full transition-all ${idx === currentSlide ? 'bg-blue-600 w-6' : 'bg-slate-300 hover:bg-slate-400'}`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+                <div className="text-slate-600 text-sm text-center">
+                  Slide {currentSlide + 1} of {slides.length}: {slides[currentSlide].name}
+                </div>
+              </div>
+              <div className="flex w-full gap-4">
                 <button
-                  key={idx}
-                  onClick={() => setCurrentSlide(idx)}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    idx === currentSlide ? 'bg-blue-600 w-6' : 'bg-slate-300 hover:bg-slate-400'
-                  }`}
-                  aria-label={`Go to slide ${idx + 1}`}
-                />
-              ))}
+                  onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
+                  disabled={currentSlide === 0}
+                  className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                  Previous
+                </button>
+                <button
+                  onClick={() => setCurrentSlide(Math.min(slides.length - 1, currentSlide + 1))}
+                  disabled={currentSlide === slides.length - 1}
+                  className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                >
+                  Next
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              </div>
             </div>
-            <div className="text-slate-600 text-sm text-center">
-              Slide {currentSlide + 1} of {slides.length}: {slides[currentSlide].name}
-            </div>
-          </div>
-          <div className="flex w-full gap-4">
-            <button
-              onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
-              disabled={currentSlide === 0}
-              className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-            >
-              <ChevronLeft className="h-5 w-5" />
-              Previous
-            </button>
-            <button
-              onClick={() => setCurrentSlide(Math.min(slides.length - 1, currentSlide + 1))}
-              disabled={currentSlide === slides.length - 1}
-              className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg shadow hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-            >
-              Next
-              <ChevronRight className="h-5 w-5" />
-            </button>
-          </div>
+          )}
         </div>
-      )}
-          </div>
-        </div>
+
       </div>
     </div>
-  </div>
   );
 }
