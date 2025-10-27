@@ -346,7 +346,7 @@ function ImprovedOutcomesSlide() {
           <div className="space-y-4">
             <div className="bg-white rounded-lg p-4">
               <div className="text-slate-600 text-sm mb-1">Potential Workload</div>
-              <div className="text-2xl font-bold text-red-600">45 hours</div>
+              <div className="text-2xl font-bold text-red-600">45 hours +</div>
               {/* MODIFICATION: Added calculation */}
               <div className="text-sm text-slate-600">If all 60 students booked appointments (60 students × 45 mins)</div>
             </div>
